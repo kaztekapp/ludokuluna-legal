@@ -4,6 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Join · Ludo Kuluna</title>
+  <meta property="og:title" content="You're invited to Ludo Kuluna" />
+  <meta property="og:description" content="Tap to join the game in the Ludo Kuluna app." />
   <style>
     :root { color-scheme: dark; }
     * { box-sizing: border-box; }
@@ -11,73 +13,95 @@
       margin: 0; min-height: 100vh;
       display: flex; align-items: center; justify-content: center;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: radial-gradient(120% 120% at 50% 0%, #1e2a5c 0%, #0d1247 60%, #080b2e 100%);
-      color: #fff; padding: 24px;
+      background: radial-gradient(130% 130% at 50% 0%, #26327a 0%, #141a66 45%, #0a0d33 100%);
+      color: #fff; padding: 22px;
     }
     .card {
-      width: 100%; max-width: 420px; text-align: center;
-      background: rgba(0,0,0,0.28); border: 1px solid rgba(255,215,0,0.25);
-      border-radius: 22px; padding: 32px 24px;
+      width: 100%; max-width: 400px; text-align: center;
+      background: rgba(0,0,0,0.30); border: 1px solid rgba(255,215,0,0.30);
+      border-radius: 26px; padding: 34px 24px 28px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.45);
     }
-    h1 { font-size: 24px; margin: 8px 0 4px; }
-    p { color: rgba(255,255,255,0.65); font-size: 15px; margin: 4px 0 24px; }
+    .logo { font-size: 52px; line-height: 1; margin-bottom: 6px; }
+    .brand { font-size: 13px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: #FFD700; margin-bottom: 18px; }
     .badge {
-      display: inline-block; margin-bottom: 12px; padding: 6px 14px; border-radius: 999px;
-      background: rgba(255,215,0,0.14); border: 1px solid rgba(255,215,0,0.45);
-      color: #FFD700; font-weight: 700; font-size: 13px; letter-spacing: 0.5px;
+      display: inline-block; margin-bottom: 12px; padding: 6px 16px; border-radius: 999px;
+      background: rgba(79,195,247,0.16); border: 1px solid rgba(79,195,247,0.5);
+      color: #7fd0ff; font-weight: 800; font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
+    }
+    h1 { font-size: 25px; margin: 6px 0 6px; font-weight: 900; }
+    p.sub { color: rgba(255,255,255,0.7); font-size: 15px; margin: 0 0 22px; line-height: 1.45; }
+    .code {
+      display: inline-block; font-size: 26px; font-weight: 900; letter-spacing: 6px; color: #7fd0ff;
+      background: rgba(79,195,247,0.10); border: 1px dashed rgba(79,195,247,0.5);
+      border-radius: 14px; padding: 10px 18px; margin: -6px 0 22px;
     }
     .btn {
-      display: block; width: 100%; padding: 15px; border: none; cursor: pointer;
-      border-radius: 16px; font-size: 17px; font-weight: 800; text-decoration: none;
+      display: block; width: 100%; padding: 16px; border: none; cursor: pointer;
+      border-radius: 16px; font-size: 18px; font-weight: 900; text-decoration: none;
       background: linear-gradient(180deg, #FFE87A, #FFD700 45%, #E6B800); color: #5D4E00;
-      margin-bottom: 14px;
+      box-shadow: 0 8px 20px rgba(255,215,0,0.30);
     }
-    .stores { display: flex; gap: 10px; justify-content: center; margin-top: 8px; }
-    .stores a { color: rgba(255,255,255,0.6); font-size: 13px; text-decoration: underline; }
-    .logo { font-size: 40px; }
+    .hint { color: rgba(255,255,255,0.5); font-size: 13px; margin: 14px 0 22px; line-height: 1.4; }
+    .divider { height: 1px; background: rgba(255,255,255,0.10); margin: 4px 0 18px; }
+    .stores-label { color: rgba(255,255,255,0.55); font-size: 13px; margin-bottom: 10px; }
+    .stores { display: flex; gap: 10px; justify-content: center; }
+    .store {
+      flex: 1; padding: 11px 8px; border-radius: 12px; text-decoration: none;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+      color: #fff; font-size: 13px; font-weight: 700;
+    }
   </style>
 </head>
 <body>
   <div class="card">
     <div class="logo">🎲</div>
-    <div class="badge" id="badge">Ludo Kuluna</div>
-    <h1 id="title">Open in Ludo Kuluna</h1>
-    <p id="subtitle">Tap the button to open the invitation in the app.</p>
-    <a class="btn" id="openBtn" href="#">Open in app</a>
+    <div class="brand">Ludo Kuluna</div>
+    <div class="badge" id="badge">Invitation</div>
+    <h1 id="title">You're invited!</h1>
+    <p class="sub" id="subtitle">Tap the button below to open the app and join.</p>
+    <div class="code" id="code" style="display:none"></div>
+
+    <a class="btn" id="openBtn" href="#">▶  Open in the app</a>
+    <p class="hint" id="hint">The app should open automatically. If it doesn't, tap the button above.</p>
+
+    <div class="divider"></div>
+    <div class="stores-label">Don't have Ludo Kuluna yet?</div>
     <div class="stores">
-      <a href="https://apps.apple.com/app/id6801181758">App Store</a>
-      <a href="https://play.google.com/store/apps/details?id=com.ludokuluna.app">Google Play</a>
+      <a class="store" href="https://apps.apple.com/app/id6801181758">📱  App Store</a>
+      <a class="store" href="https://play.google.com/store/apps/details?id=com.ludokuluna.app">🤖  Google Play</a>
     </div>
   </div>
 
   <script>
     (function () {
       var params = new URLSearchParams(window.location.search);
-      var type = params.get('type');   // 'tournament' | 'room'
-      var id = params.get('id');
+      var type = params.get('type');
       var code = params.get('code');
-
-      // Build the app deep link handled by app/join.tsx.
       var appUrl = 'ludo-kuluna://join?' + params.toString();
 
       var badge = document.getElementById('badge');
       var title = document.getElementById('title');
       var subtitle = document.getElementById('subtitle');
+      var codeEl = document.getElementById('code');
+
       if (type === 'tournament') {
-        badge.textContent = 'Tournament';
-        title.textContent = 'Join the tournament';
-        subtitle.textContent = 'Open Ludo Kuluna to view and join.';
+        badge.textContent = '🏆 Tournament';
+        title.textContent = "You're invited to a tournament!";
+        subtitle.textContent = 'Open Ludo Kuluna to see the details and join the competition.';
       } else if (type === 'room') {
-        badge.textContent = 'Friend game';
-        title.textContent = 'Join the game' + (code ? ' · ' + code : '');
-        subtitle.textContent = 'Open Ludo Kuluna to join your friend.';
+        badge.textContent = '🎲 Friend game';
+        title.textContent = 'Your friend wants to play!';
+        subtitle.textContent = 'Open Ludo Kuluna to join the game.';
+        if (code) { codeEl.textContent = code; codeEl.style.display = 'inline-block'; }
       }
 
       var btn = document.getElementById('openBtn');
       btn.href = appUrl;
+      btn.addEventListener('click', function () { window.location.href = appUrl; });
 
       // Auto-attempt to open the app shortly after load.
-      setTimeout(function () { window.location.href = appUrl; }, 600);
+      setTimeout(function () { window.location.href = appUrl; }, 700);
     })();
   </script>
 </body>
