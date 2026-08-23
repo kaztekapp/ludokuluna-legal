@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Join · Ludo Kuluna</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(120% 120% at 50% 0%, #1e2a5c 0%, #0d1247 60%, #080b2e 100%);
+      color: #fff; padding: 24px;
+    }
+    .card {
+      width: 100%; max-width: 420px; text-align: center;
+      background: rgba(0,0,0,0.28); border: 1px solid rgba(255,215,0,0.25);
+      border-radius: 22px; padding: 32px 24px;
+    }
+    h1 { font-size: 24px; margin: 8px 0 4px; }
+    p { color: rgba(255,255,255,0.65); font-size: 15px; margin: 4px 0 24px; }
+    .badge {
+      display: inline-block; margin-bottom: 12px; padding: 6px 14px; border-radius: 999px;
+      background: rgba(255,215,0,0.14); border: 1px solid rgba(255,215,0,0.45);
+      color: #FFD700; font-weight: 700; font-size: 13px; letter-spacing: 0.5px;
+    }
+    .btn {
+      display: block; width: 100%; padding: 15px; border: none; cursor: pointer;
+      border-radius: 16px; font-size: 17px; font-weight: 800; text-decoration: none;
+      background: linear-gradient(180deg, #FFE87A, #FFD700 45%, #E6B800); color: #5D4E00;
+      margin-bottom: 14px;
+    }
+    .stores { display: flex; gap: 10px; justify-content: center; margin-top: 8px; }
+    .stores a { color: rgba(255,255,255,0.6); font-size: 13px; text-decoration: underline; }
+    .logo { font-size: 40px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">🎲</div>
+    <div class="badge" id="badge">Ludo Kuluna</div>
+    <h1 id="title">Open in Ludo Kuluna</h1>
+    <p id="subtitle">Tap the button to open the invitation in the app.</p>
+    <a class="btn" id="openBtn" href="#">Open in app</a>
+    <div class="stores">
+      <a href="https://apps.apple.com/app/id6801181758">App Store</a>
+      <a href="https://play.google.com/store/apps/details?id=com.ludokuluna.app">Google Play</a>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var type = params.get('type');   // 'tournament' | 'room'
+      var id = params.get('id');
+      var code = params.get('code');
+
+      // Build the app deep link handled by app/join.tsx.
+      var appUrl = 'ludo-kuluna://join?' + params.toString();
+
+      var badge = document.getElementById('badge');
+      var title = document.getElementById('title');
+      var subtitle = document.getElementById('subtitle');
+      if (type === 'tournament') {
+        badge.textContent = 'Tournament';
+        title.textContent = 'Join the tournament';
+        subtitle.textContent = 'Open Ludo Kuluna to view and join.';
+      } else if (type === 'room') {
+        badge.textContent = 'Friend game';
+        title.textContent = 'Join the game' + (code ? ' · ' + code : '');
+        subtitle.textContent = 'Open Ludo Kuluna to join your friend.';
+      }
+
+      var btn = document.getElementById('openBtn');
+      btn.href = appUrl;
+
+      // Auto-attempt to open the app shortly after load.
+      setTimeout(function () { window.location.href = appUrl; }, 600);
+    })();
+  </script>
+</body>
+</html>
