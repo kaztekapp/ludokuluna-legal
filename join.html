@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Join · Ludo Kuluna</title>
-  <meta property="og:title" content="You're invited to Ludo Kuluna" />
-  <meta property="og:description" content="Tap to join the game in the Ludo Kuluna app." />
+  <title>Join · Ludo Mafia: Board Game</title>
+  <meta property="og:title" content="You're invited to Ludo Mafia: Board Game" />
+  <meta property="og:description" content="Tap to join the game in the Ludo Mafia: Board Game app." />
   <style>
     :root { color-scheme: dark; }
     * { box-sizing: border-box; }
@@ -56,7 +56,7 @@
 <body>
   <div class="card">
     <div class="logo">🎲</div>
-    <div class="brand">Ludo Kuluna</div>
+    <div class="brand">Ludo Mafia: Board Game</div>
     <div class="badge" id="badge">Invitation</div>
     <h1 id="title">You're invited!</h1>
     <p class="sub" id="subtitle">Tap the button below to open the app and join.</p>
@@ -66,7 +66,7 @@
     <p class="hint" id="hint">The app should open automatically. If it doesn't, tap the button above.</p>
 
     <div class="divider"></div>
-    <div class="stores-label">Don't have Ludo Kuluna yet?</div>
+    <div class="stores-label">Don't have Ludo Mafia: Board Game yet?</div>
     <div class="stores">
       <a class="store" href="https://apps.apple.com/app/id6801181758">📱  App Store</a>
       <a class="store" href="https://play.google.com/store/apps/details?id=com.ludokuluna.app">🤖  Google Play</a>
@@ -88,11 +88,11 @@
       if (type === 'tournament') {
         badge.textContent = '🏆 Tournament';
         title.textContent = "You're invited to a tournament!";
-        subtitle.textContent = 'Open Ludo Kuluna to see the details and join the competition.';
+        subtitle.textContent = 'Open Ludo Mafia: Board Game to see the details and join the competition.';
       } else if (type === 'room') {
         badge.textContent = '🎲 Friend game';
         title.textContent = 'Your friend wants to play!';
-        subtitle.textContent = 'Open Ludo Kuluna to join the game.';
+        subtitle.textContent = 'Open Ludo Mafia: Board Game to join the game.';
         if (code) { codeEl.textContent = code; codeEl.style.display = 'inline-block'; }
       }
 
